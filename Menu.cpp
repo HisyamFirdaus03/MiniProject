@@ -39,7 +39,7 @@ void Menu :: displaySecondOption(){
     cout << "--------------------------------------------" << endl;
     cout << right << setw(10) << " " << "Current Waiting Number" << endl;
     cout << "--------------------------------------------" << endl;
-    patientQueue->displayBack();
+    patientQueue->displayFront();
     cout << "--------------------------------------------" << endl;
     cout << endl;
 }
