@@ -20,4 +20,5 @@ class Queue
         void displayFront();
         void displayBack();
         void displayAll();
+        class EmptyQueue{};
 };

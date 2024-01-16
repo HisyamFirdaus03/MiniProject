@@ -37,41 +37,34 @@ void Queue :: enqueue(Patient *newPatient){
     }
     else{
 
-        newPatient->next = front;
-        front = newPatient;
+        back->next = newPatient;
+        back = newPatient;
+        newPatient->next = NULL;
     }
 }
 
 void Queue :: dequeue(){
 
-    if(isEmpty()) return;
+    Patient *delNode = front;
 
-    Patient *lastNode = front;
-    while(lastNode){
+    if(front == back){
 
-        if(lastNode->next == back) break;
-        lastNode = lastNode->next;
-    }
-
-    if(lastNode == NULL){
-
-        delete back;
         front = NULL;
         back = NULL;
+        delete delNode;
     }
-    else{
+    else if(!isEmpty()){
 
-        delete back;
-        lastNode->next = NULL;
-        back = lastNode;
+        front = front->next;
+        delete delNode;
     }
 }
 
 void Queue :: generateNewNumber(Patient *newPatient){
 
     enqueue(newPatient);
-    front->assignWaitingNumber(++currWaitingNumber);
-    front->assignRoom(++currRoomNumber);
+    back->assignWaitingNumber(++currWaitingNumber);
+    back->assignRoom(++currRoomNumber);
 
     if(currRoomNumber >= MAX_ROOM_NUMBER)
         currRoomNumber = 0;
@@ -79,12 +72,14 @@ void Queue :: generateNewNumber(Patient *newPatient){
 
 void Queue :: deleteLastNumber(){
 
-    back->assignWaitingNumber(-1);
-    back->assignRoom(-1);
+    front->assignWaitingNumber(-1);
+    front->assignRoom(-1);
     dequeue();
 }
 
 void Queue :: displayFront(){
+
+    if(isEmpty()) throw EmptyQueue();
 
     cout << endl;
     cout << left << setw(15) << " Waiting Number" << ": " << front->getWaitingNumber() << endl;
@@ -95,6 +90,8 @@ void Queue :: displayFront(){
 }
 
 void Queue :: displayBack(){
+
+    if(isEmpty()) throw EmptyQueue();
 
     cout << left << setw(15) << " Waiting Number" << ": " << back->getWaitingNumber() << endl;
     cout << left << setw(15) << " Patient's Name" << ": " << back->getName() << endl;
@@ -107,6 +104,8 @@ void Queue :: displayAll(){
 
     Patient *currNode = front;
     int num = 0;
+
+    if(isEmpty()) throw EmptyQueue();
 
     cout << left;
     cout << setw(5) << "No.";
