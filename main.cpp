@@ -6,13 +6,11 @@
 
 using namespace std;
 
-#define MAX_NUMBER_PATIENT 10
-
 int main()
 {
     Queue patientQueue;
     Menu menu(&patientQueue);
-    Patient *patient[MAX_NUMBER_PATIENT];
+    Patient *patient;
 
     int option, age, patientCount = 0;
     string patientName;
@@ -20,18 +18,33 @@ int main()
     do{
 
         menu.displayMainMenu(option);
+        system("cls");
         
         switch(option){
 
             case 1:
                 menu.displayFirstOption(patientName, age);
+                patient = new Patient(patientName, age);
+                patientQueue.generateNewNumber(patient);
+                patientQueue.displayFront();
+                patient = NULL;
+                system("pause");
+                system("cls");
                 break;
 
             case 2:
+                menu.displaySecondOption();
+                patientQueue.deleteLastNumber();
+                break;
 
             case 3:
+                menu.displayThirdOption();
+                system("pause");
+                system("cls");
+                break;
 
             default:
+                break;
         }
 
     }while(option != 4);
