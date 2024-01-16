@@ -1,7 +1,7 @@
 #pragma once
 #include "Patient.hpp"  
 
-#define MAX_ROOM_NUMBER 5
+#define MAX_ROOM_NUMBER 3
 
 class Queue
 {
@@ -11,11 +11,13 @@ class Queue
     
     public:
         Queue();
+        ~Queue();
         bool isEmpty();
         void enqueue(Patient *newPatient);
         void dequeue();
         void generateNewNumber(Patient *newPatient);
         void deleteLastNumber();
+        void displayFront();
         void displayBack();
         void displayAll();
 };
