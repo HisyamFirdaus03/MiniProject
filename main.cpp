@@ -20,33 +20,41 @@ int main()
         menu.displayMainMenu(option);
         system("cls");
         
-        switch(option){
+        try{
 
-            case 1:
-                menu.displayFirstOption(patientName, age);
-                patient = new Patient(patientName, age);
-                patientQueue.generateNewNumber(patient);
-                patientQueue.displayFront();
-                patient = NULL;
-                system("pause");
-                system("cls");
-                break;
+            switch(option){
 
-            case 2:
-                menu.displaySecondOption();
-                patientQueue.deleteLastNumber();
-                break;
+                case 1:
+                    menu.displayFirstOption(patientName, age);
+                    patient = new Patient(patientName, age);
+                    patientQueue.generateNewNumber(patient);
+                    patientQueue.displayBack();
+                    patient = NULL;
+                    system("pause");
+                    system("cls");
+                    break;
 
-            case 3:
-                menu.displayThirdOption();
-                system("pause");
-                system("cls");
-                break;
+                case 2:
+                    menu.displaySecondOption();
+                    patientQueue.deleteLastNumber();
+                    break;
 
-            default:
-                break;
-        }
+                case 3:
+                    menu.displayThirdOption();
+                    system("pause");
+                    system("cls");
+                    break;
 
+                default:
+                    break;
+                }   
+            }
+        catch(Queue::EmptyQueue){
+
+                cout << "Error: The Queue is Empty!" << endl;
+                cout << endl;
+            }
+    
     }while(option != 4);
 
     system("pause");
