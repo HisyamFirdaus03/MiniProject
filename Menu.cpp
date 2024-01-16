@@ -31,7 +31,7 @@ void Menu :: displayFirstOption(string &patientName, int &age){
     cout << "Enter the patient's age: ";
     cin >> age;
     cout << "--------------------------------------------" << endl;
-    cout << endl;
+    cout << "Generated Waiting Number, Please wait until your number shows up on the screen :) " << endl;
 }
 
 void Menu :: displaySecondOption(){
@@ -46,10 +46,10 @@ void Menu :: displaySecondOption(){
 
 void Menu :: displayThirdOption(){
 
-    cout << "--------------------------------------------" << endl;
-    cout << right << setw(10) << " " << "Display Waiting Number" << endl;
-    cout << "--------------------------------------------" << endl;
-    patientQueue.displayAll();
-    cout << "--------------------------------------------" << endl;
+    cout << "--------------------------------------------------------------------" << endl;
+    cout << right << setw(20) << " " << "Display Waiting Number" << endl;
+    cout << "--------------------------------------------------------------------" << endl;
+    patientQueue->displayAll();
+    cout << "--------------------------------------------------------------------" << endl;
     cout << endl;
 }

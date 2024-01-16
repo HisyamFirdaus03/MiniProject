@@ -12,4 +12,6 @@ class Menu
         Menu(Queue *_queue = NULL);
         void displayMainMenu(int &option);
         void displayFirstOption(string &patientName, int &age);
+        void displaySecondOption();
+        void displayThirdOption();
 };
